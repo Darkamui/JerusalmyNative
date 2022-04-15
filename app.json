@@ -1,0 +1,13 @@
+{
+  "expo": {
+    "name": "JerusalmyNative",
+    "description": "React native informational app",
+    "android": {
+      "package": "com.danieljerusalmy.jerusalmynative",
+      "permissions": ["READ_EXTERNAL_STORAGE","WRITE_EXTERNAL_STORAGE","MEDIA_LIBRARY"]
+    },
+    "ios": {
+      "bundleIdentifier": "com.danieljerusalmy.jerusalmynative"
+    }
+  }
+}
