@@ -5,18 +5,21 @@ import {
 	Image,
 	SafeAreaView,
 	ScrollView,
-	StyleSheet,
 	TouchableOpacity,
 	Linking,
 } from "react-native";
 import BottomNav from "../components/BottomNav";
 import { Divider } from "react-native-elements";
+import { useTranslation } from "react-i18next";
+import { t } from "i18next";
+
+// Affichage détaillée d'une oeuvre
 
 export default function Book({ navigation, route }) {
 	var amazon = require("../assets/amazon.png");
 	var fnac = require("../assets/fnac.png");
 	var rakuten = require("../assets/rakuten.png");
-
+	const { i18n } = useTranslation();
 	return (
 		<SafeAreaView
 			style={{
@@ -60,9 +63,9 @@ export default function Book({ navigation, route }) {
 							textTransform: "capitalize",
 						}}
 					>
-						Date de sortie: {route.params.book.publishDate}
+						{t("sortie")}: {route.params.book.publishDate}
 					</Text>
-					<Text
+					{/* <Text
 						style={{
 							paddingHorizontal: 20,
 							paddingVertical: 15,
@@ -89,12 +92,12 @@ export default function Book({ navigation, route }) {
 						}}
 					>
 						Lire un extrait
-					</Text>
+					</Text> */}
 
 					<View style={{ flexDirection: "row" }}>
-						<BuyButton image={amazon} link="https://www.amazon.com" />
-						<BuyButton image={rakuten} link="amazon.com" />
-						<BuyButton image={fnac} link="amazon.com" />
+						<BuyButton image={amazon} link={route.params.book.amazon} />
+						<BuyButton image={rakuten} link={route.params.book.rakuten} />
+						<BuyButton image={fnac} link={route.params.book.fnac} />
 					</View>
 					<View
 						style={{
@@ -119,7 +122,9 @@ export default function Book({ navigation, route }) {
 								marginBottom: 50,
 							}}
 						>
-							{route.params.book.summary}
+							{i18n.language == "en"
+								? route.params.book.englishSum
+								: route.params.book.summary}
 						</Text>
 					</View>
 				</View>

@@ -1,10 +1,23 @@
 {
-    "translation": {
-      "topHomeText": "Face à la désinfromation et aux attaques constantes dont le peuple juif est la cible, il est impératif de parler et réagir. Pour faire valoir vos droits, encore faut-il les connaître.",
-      "readOnline": "lecture en ligne",
-      "botHomeText": "Mieux savoir, mieux comprendre, pour mieux se défendre. Tel est le principe du Manuel Bleu.",
-      "download": "lecture en ligne / télécharger",
-      
-      "this line is translated":"This line is translated"
-    }
-  }
+	"translation": {
+		"topHomeText": "Face à la désinfromation et aux attaques constantes dont le peuple juif est la cible, il est impératif de parler et réagir. Pour faire valoir vos droits, encore faut-il les connaître.",
+		"readOnline": "lecture en ligne",
+		"botHomeText": "Mieux savoir, mieux comprendre, pour mieux se défendre. Tel est le principe du Manuel Bleu.",
+		"download": "lecture en ligne / télécharger",
+
+		"this line is translated": "This line is translated",
+		"bio": "Diplômé de l'École Normale Supérieure, après ses études, il s'engage dans l'armée israélienne, au sein de laquelle il évolue rapidement vers le service de renseignement.",
+		"bio2": "Après une quinzaine d'années, il prend sa retraite de l'armée et mène des actions éducatives et humanitaires, puis devient négociant en livres anciens à Tel Aviv. Il est également expert sur la chaîne de télévision I24news.",
+		"bio3": "Il publie un premier roman très remarqué en 2012, 'Sauvez Mozart' pour lequel il a reçu le prix Emmanuel Roblès 2013 et le prix littéraire de l'ENS Cachan.",
+		"bio4": "Auteur de romans à succès : 'La confrérie des chasseurs de livres' (Actes Sud, 2013), 'Denis Diderot, non à l’ignorance' (Actes Sud junior, 2014), son roman 'Les obus jouaient à pigeon vole', paru en février 2016 dans la collection Sur le fil aux Éditions Bruno Doucey a été couronné par le Prix Coup de cœur des lecteurs des Rendez-vous de l’histoire de Blois 2016.",
+		"bio5": "En 2018, Il signe 'La rose de Saragosse', un roman palpitant dans lequel il revient sur la persécution des Juifs d’Espagne par l’Inquisition au XVe siècle.",
+		"accueil": "accueil",
+		"biographie": "biographie",
+		"oeuvres": "oeuvres",
+		"contact": "contact",
+		"byMail": "Par courrier: ",
+		"byEmail": "Par courriel: ",
+		"romancier": "Romancier",
+		"sortie": "Date de publication"
+	}
+}

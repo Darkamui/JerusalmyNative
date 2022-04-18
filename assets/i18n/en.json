@@ -1,9 +1,22 @@
 {
-    "translation": {
-      "topHomeText": "In the face of constant misinformation and attacks on the jewish people, it is imperative to speak out and react. To assert your rights, you still need to know them.",
-      "botHomeText": "To know better, to understand better, to better defend oneself. This is the principle of the Blue Manual.",
-      "readOnline": "read online",
-      "download": "read online / download",
-      "this line is translated":"This line is translated"
-    }
-  }
+	"translation": {
+		"topHomeText": "In the face of constant misinformation and attacks on the jewish people, it is imperative to speak out and react. To assert your rights, you still need to know them.",
+		"botHomeText": "To know better, to understand better, to better defend oneself. This is the principle of the Blue Manual.",
+		"readOnline": "read online",
+		"download": "read online / download",
+		"this line is translated": "This line is translated",
+		"bio": " A graduate of the École Normale Supérieure, after his studies, he committed in the Israeli army, in which he quickly evolved to the intelligence service.",
+		"bio2": "After fifteen years, he retired from the army and carries out educational and humanitarian actions, then becomes a trader in old books in Tel Aviv. He is also an expert on the channel I24news television.",
+		"bio3": "He published a highly acclaimed first novel in 2012, 'Sauvez Mozart' for which he received the 2013 Emmanuel Roblès Prize and the literature from ENS Cachan.",
+		"bio4": "Author of bestselling novels: 'The Brotherhood of Book Hunters' (Actes Sud, 2013), 'Denis Diderot, no to ignorance' (Actes Sud junior, 2014), his novel 'Les shells played pigeon flies', published in February 2016 in the Sur le fil collection at Éditions Bruno Doucey was crowned with the Coup de coeur prize from the readers of Les Rendez-vous in the history of Blois 2016.",
+		"bio5": "In 2018, he signed 'La rose de Saragosse', a thrilling novel in which he returns to the persecution of the Jews of Spain by the Inquisition in the 15th century.",
+		"accueil": "home",
+		"biographie": "biography",
+		"oeuvres": "novels",
+		"byMail": "By mail: ",
+		"byEmail": "By e-mail: ",
+		"romancier": "Novelist",
+
+		"sortie": "Published on"
+	}
+}

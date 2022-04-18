@@ -1,3 +1,4 @@
+import { t } from "i18next";
 import React from "react";
 import {
 	View,
@@ -9,87 +10,10 @@ import {
 	Button,
 } from "react-native";
 import { Divider } from "react-native-elements";
-
-import HeaderText from "../components/HeaderText";
 import BottomNav from "../components/BottomNav";
-export default function Contact({ navigation }) {
-	const [text, onChangeText] = React.useState("");
-	const [name, onChangeName] = React.useState("");
 
-	const [email, onChangeEmail] = React.useState("");
-	const createTwoButtonAlert = () =>
-		Alert.alert("Merci!", "Message envoyé.", [{ text: "OK" }]);
-	return (
-		<SafeAreaView
-			style={{
-				flex: 1,
-				justifyContent: "center",
-				alignItems: "center",
-				paddingTop: 20,
-			}}
-		>
-			<ScrollView>
-				<TitleBar title="Manuel Bleu" />
-				<View
-					style={{
-						flexDirection: "row",
-						flexWrap: "wrap",
-						paddingHorizontal: 20,
-					}}
-				>
-					<Text style={{ fontWeight: "bold", fontSize: 15 }}>
-						Par courrier:
-					</Text>
-					<Text>
-						David Reinharc éditions, 19 rue de Miromesnil, 75008 - Paris
-					</Text>
-				</View>
-				<View
-					style={{
-						flexDirection: "row",
-						flexWrap: "wrap",
-						paddingHorizontal: 20,
-					}}
-				>
-					<Text style={{ fontWeight: "bold", fontSize: 15, marginRight: 5 }}>
-						Par courriel:
-					</Text>
-					<Text>david.reinharc@gmail.com</Text>
-				</View>
-				<TitleBar title="Raphaël Jerusalmy" />
-
-				<View style={{ justifyContent: "center", alignItems: "center" }}>
-					<CustomInput value={name} onchange={onChangeName} holder="Nom" />
-
-					<CustomInput
-						value={email}
-						onchange={onChangeEmail}
-						holder="Courriel"
-					/>
-					<CustomInput
-						value={text}
-						onchange={onChangeText}
-						holder="Message"
-						msg={true}
-					/>
-					<View
-						style={{
-							alignItems: "center",
-							justifyContent: "center",
-							backgroundColor: "#7CFFC0",
-							width: "65%",
-							padding: 10,
-							borderRadius: 10,
-						}}
-					>
-						<Button title="Envoyer" onPress={createTwoButtonAlert} />
-					</View>
-				</View>
-			</ScrollView>
-			<BottomNav navigation={navigation} />
-		</SafeAreaView>
-	);
-}
+// Écran pour message contact
+// Alerte lors de l'envoie d'un message (le message n'est pas vraiment envoyé)
 
 const TitleBar = ({ title }) => (
 	<View style={{ padding: 20 }}>
@@ -112,7 +36,7 @@ const TitleBar = ({ title }) => (
 	</View>
 );
 
-const CustomInput = ({ value, onchange, holder, msg }) => (
+const CustomInput = ({ onchange, holder, msg }) => (
 	<View
 		style={{
 			backgroundColor: "#E0FFF0",
@@ -127,9 +51,89 @@ const CustomInput = ({ value, onchange, holder, msg }) => (
 	>
 		<TextInput
 			placeholder={holder}
-			onChangeText={onchange}
-			value={value}
+			onChangeText={(newText) => onchange(newText)}
 			style={{ paddingLeft: 10 }}
 		/>
 	</View>
 );
+
+export default function Contact({ navigation }) {
+	const [text, onChangeText] = React.useState("");
+	const [name, onChangeName] = React.useState("");
+
+	const [email, onChangeEmail] = React.useState("");
+	const createTwoButtonAlert = () => {
+		if (name || text || email === "") {
+			Alert.alert("Erreur!", "Veuillez remplir tout les champs s.v.p", [
+				{ text: "OK" },
+			]);
+		} else {
+			Alert.alert("Merci!", "Message envoyé.", [{ text: "OK" }]);
+		}
+	};
+	return (
+		<SafeAreaView
+			style={{
+				flex: 1,
+				justifyContent: "center",
+				alignItems: "center",
+				// paddingTop: 20,
+			}}
+		>
+			<ScrollView>
+				<TitleBar title="Manuel Bleu" />
+				<View
+					style={{
+						flexDirection: "row",
+						flexWrap: "wrap",
+						paddingHorizontal: 20,
+					}}
+				>
+					<Text style={{ fontWeight: "bold", fontSize: 15 }}>
+						{t("byMail")}
+					</Text>
+					<Text>
+						David Reinharc éditions, 19 rue de Miromesnil, 75008 - Paris
+					</Text>
+				</View>
+				<View
+					style={{
+						flexDirection: "row",
+						flexWrap: "wrap",
+						paddingHorizontal: 20,
+					}}
+				>
+					<Text style={{ fontWeight: "bold", fontSize: 15, marginRight: 5 }}>
+						{t("byEmail")}
+					</Text>
+					<Text>david.reinharc@gmail.com</Text>
+				</View>
+				<TitleBar title="Raphaël Jerusalmy" />
+
+				<View style={{ justifyContent: "center", alignItems: "center" }}>
+					<CustomInput onchange={onChangeName} holder="Nom" />
+
+					<CustomInput onchange={onChangeEmail} holder="Courriel" />
+					<CustomInput onchange={onChangeText} holder="Message" msg={true} />
+					<View
+						style={{
+							alignItems: "center",
+							justifyContent: "center",
+							backgroundColor: "#7CFFC0",
+							width: "65%",
+							padding: 10,
+							borderRadius: 10,
+						}}
+					>
+						<Button
+							color="#7CFFC0"
+							title="Envoyer"
+							onPress={createTwoButtonAlert}
+						/>
+					</View>
+				</View>
+			</ScrollView>
+			<BottomNav navigation={navigation} />
+		</SafeAreaView>
+	);
+}

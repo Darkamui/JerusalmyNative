@@ -1,7 +1,8 @@
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import React from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
-
+import { useTranslation } from "react-i18next";
+import { t } from "i18next";
 // Composante de Navigation
 // Icon applique le même style à chaque item tout en utilisant des données dynamiques
 // Recoit navigation à partir de Home qui l'a recu de lors du load initial
@@ -14,19 +15,19 @@ export default function BottomTabs({ navigation }) {
 		<View style={styles.nav}>
 			<Icon
 				icon="landmark"
-				text="accueil"
+				text={t("accueil")}
 				link="Home"
 				navigation={navigation}
 			/>
 			<Icon
 				icon="user"
-				text="biographie"
+				text={t("biographie")}
 				link="Biographie"
 				navigation={navigation}
 			/>
 			<Icon
 				icon="book-open"
-				text="oeuvres"
+				text={t("oeuvres")}
 				link="Books"
 				navigation={navigation}
 			/>

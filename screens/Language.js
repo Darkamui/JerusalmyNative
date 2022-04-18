@@ -1,13 +1,13 @@
-import React, { useState } from "react";
+// IMPORTATION COMPOSANTES, FONTS, ETC.
+import React from "react";
+
 import {
 	View,
 	Text,
 	Image,
 	SafeAreaView,
-	ScrollView,
 	StyleSheet,
 	Animated,
-	Linking,
 } from "react-native";
 import {
 	useFonts,
@@ -15,19 +15,35 @@ import {
 } from "@expo-google-fonts/dancing-script";
 import AppLoading from "expo-app-loading";
 import CountryFlag from "react-native-country-flag";
-// Page d'accueil
-// Transfert des données dynamiques et non statiques pour les composantes
-// réutilisables tel que l'image d'en-tête et le texte d'en-tête
-//
-//
-//
-//
-//
-//
+
+// Écran premier de l'application
+// Choix entre anglais et français et transfert du choix au prochain écran
+
+const styles = StyleSheet.create({
+	actionBtn: {
+		paddingHorizontal: 20,
+		paddingVertical: 15,
+		fontSize: 13,
+		marginTop: 20,
+		backgroundColor: "white",
+		color: "black",
+		textTransform: "capitalize",
+		borderRadius: 15,
+		textAlign: "center",
+		marginHorizontal: 5,
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 5,
+			height: 10,
+		},
+		shadowOpacity: 0.95,
+		shadowRadius: 5.84,
+		elevation: 5,
+	},
+});
 
 export default function Language({ navigation }) {
 	var langImage = require("../assets/bio2.jpg");
-
 	let [fontsLoaded] = useFonts({
 		DancingScript_700Bold,
 	});
@@ -110,11 +126,6 @@ export default function Language({ navigation }) {
 								textTransform: "capitalize",
 								textAlign: "center",
 							}}
-							// onPress={() =>
-							// 	Linking.openURL("bundle-assets://manuel4.pdf").catch((err) =>
-							// 		console.error("An error occurred", err)
-							// 	)
-							// }
 							title=""
 						>
 							français
@@ -157,11 +168,6 @@ export default function Language({ navigation }) {
 								textAlign: "center",
 								fontWeight: "500",
 							}}
-							// onPress={() =>
-							// 	Linking.openURL("bundle-assets://manuel4.pdf").catch((err) =>
-							// 		console.error("An error occurred", err)
-							// 	)
-							// }
 							title=""
 						>
 							Anglais
@@ -172,25 +178,3 @@ export default function Language({ navigation }) {
 		</Animated.View>
 	);
 }
-const styles = StyleSheet.create({
-	actionBtn: {
-		paddingHorizontal: 20,
-		paddingVertical: 15,
-		fontSize: 13,
-		marginTop: 20,
-		backgroundColor: "white",
-		color: "black",
-		textTransform: "capitalize",
-		borderRadius: 15,
-		textAlign: "center",
-		marginHorizontal: 5,
-		shadowColor: "#000",
-		shadowOffset: {
-			width: 5,
-			height: 10,
-		},
-		shadowOpacity: 0.95,
-		shadowRadius: 5.84,
-		elevation: 5,
-	},
-});
