@@ -18,14 +18,7 @@ export default function useNavigation() {
 	// Configuration de la route initiale + les routes de l'appli
 	return (
 		<NavigationContainer>
-			<Stack.Navigator
-				initialRouteName="Language"
-				screenOptions={{
-					cardStyleInterpolator:
-						CardStyleInterpolators.forFadeFromBottomAndroid,
-					headerShown: false,
-				}}
-			>
+			<Stack.Navigator initialRouteName="Language">
 				<Stack.Screen name="Language" component={Language} />
 				<Stack.Screen name="Home" component={Home} />
 				<Stack.Screen name="Biographie" component={Bio} />

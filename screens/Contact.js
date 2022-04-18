@@ -1,5 +1,6 @@
 import { t } from "i18next";
 import React from "react";
+import { useTranslation } from "react-i18next";
 import {
 	View,
 	Text,
@@ -58,18 +59,14 @@ const CustomInput = ({ onchange, holder, msg }) => (
 );
 
 export default function Contact({ navigation }) {
-	const [text, onChangeText] = React.useState("");
-	const [name, onChangeName] = React.useState("");
+	const { t } = useTranslation();
+	const [text, onChangeText] = React.useState(t("msg"));
 
-	const [email, onChangeEmail] = React.useState("");
+	const [name, onChangeName] = React.useState(t("nom"));
+
+	const [email, onChangeEmail] = React.useState(t("courriel"));
 	const createTwoButtonAlert = () => {
-		if (name || text || email === "") {
-			Alert.alert("Erreur!", "Veuillez remplir tout les champs s.v.p", [
-				{ text: "OK" },
-			]);
-		} else {
-			Alert.alert("Merci!", "Message envoyé.", [{ text: "OK" }]);
-		}
+		Alert.alert("Merci!", "Message envoyé.", [{ text: "OK" }]);
 	};
 	return (
 		<SafeAreaView
@@ -111,10 +108,10 @@ export default function Contact({ navigation }) {
 				<TitleBar title="Raphaël Jerusalmy" />
 
 				<View style={{ justifyContent: "center", alignItems: "center" }}>
-					<CustomInput onchange={onChangeName} holder="Nom" />
+					<CustomInput onchange={onChangeName} holder={name} />
 
-					<CustomInput onchange={onChangeEmail} holder="Courriel" />
-					<CustomInput onchange={onChangeText} holder="Message" msg={true} />
+					<CustomInput onchange={onChangeEmail} holder={email} />
+					<CustomInput onchange={onChangeText} holder={text} msg={true} />
 					<View
 						style={{
 							alignItems: "center",

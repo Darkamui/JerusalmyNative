@@ -18,6 +18,10 @@
 		"byMail": "Par courrier: ",
 		"byEmail": "Par courriel: ",
 		"romancier": "Romancier",
-		"sortie": "Date de publication"
+		"sortie": "Date de publication",
+		"msg": "Mon message",
+		"nom": "Mon nom",
+		"courriel": "Mon courriel",
+		"send": "envoyer"
 	}
 }

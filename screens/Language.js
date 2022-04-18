@@ -19,29 +19,6 @@ import CountryFlag from "react-native-country-flag";
 // Écran premier de l'application
 // Choix entre anglais et français et transfert du choix au prochain écran
 
-const styles = StyleSheet.create({
-	actionBtn: {
-		paddingHorizontal: 20,
-		paddingVertical: 15,
-		fontSize: 13,
-		marginTop: 20,
-		backgroundColor: "white",
-		color: "black",
-		textTransform: "capitalize",
-		borderRadius: 15,
-		textAlign: "center",
-		marginHorizontal: 5,
-		shadowColor: "#000",
-		shadowOffset: {
-			width: 5,
-			height: 10,
-		},
-		shadowOpacity: 0.95,
-		shadowRadius: 5.84,
-		elevation: 5,
-	},
-});
-
 export default function Language({ navigation }) {
 	var langImage = require("../assets/bio2.jpg");
 	let [fontsLoaded] = useFonts({

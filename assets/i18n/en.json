@@ -17,6 +17,10 @@
 		"byEmail": "By e-mail: ",
 		"romancier": "Novelist",
 
-		"sortie": "Published on"
+		"sortie": "Published on",
+		"msg": "My message",
+		"nom": "My name",
+		"courriel": "My e-mail",
+		"send": "send"
 	}
 }
