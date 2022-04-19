@@ -1,7 +1,7 @@
+// IMPORTATION COMPOSANTES, FONTS, HOOKS, ETC.
 import React from "react";
-import { View, Text, SafeAreaView, ScrollView } from "react-native";
+import { View, Text, SafeAreaView, ScrollView, StyleSheet } from "react-native";
 import { useTranslation } from "react-i18next";
-
 import HeaderImage from "../components/HeaderImage";
 import HeaderText from "../components/HeaderText";
 import BottomNav from "../components/BottomNav";
@@ -10,30 +10,15 @@ import BottomNav from "../components/BottomNav";
 
 export default function Bio({ navigation }) {
 	var bioImage = require("../assets/bio.png");
-	const { t, i18n } = useTranslation();
+	const { t } = useTranslation();
 
 	return (
-		<SafeAreaView
-			style={{
-				flex: 1,
-				justifyContent: "center",
-				alignItems: "center",
-				marginTop: 25,
-			}}
-		>
+		<SafeAreaView style={styles.safe}>
 			<HeaderImage image={bioImage} />
-
 			<ScrollView>
 				<HeaderText title="raphaël jerusalmy" subtitle={t("biographie")} />
 				<View style={{ justifyContent: "center", alignItems: "center" }}>
-					<Text
-						style={{
-							paddingHorizontal: 30,
-							fontSize: 15,
-							lineHeight: 33,
-							marginBottom: 10,
-						}}
-					>
+					<Text style={styles.txt}>
 						{t("bio")}
 						{"\n"}
 						{"\n"}
@@ -53,3 +38,17 @@ export default function Bio({ navigation }) {
 		</SafeAreaView>
 	);
 }
+
+const styles = StyleSheet.create({
+	safe: {
+		flex: 1,
+		justifyContent: "center",
+		alignItems: "center",
+	},
+	txt: {
+		paddingHorizontal: 30,
+		fontSize: 15,
+		lineHeight: 33,
+		marginBottom: 10,
+	},
+});

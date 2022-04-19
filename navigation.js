@@ -1,9 +1,6 @@
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
-import {
-	createStackNavigator,
-	CardStyleInterpolators,
-} from "@react-navigation/stack";
+import { createStackNavigator } from "@react-navigation/stack";
 import Home from "./screens/Home";
 import Bio from "./screens/Bio";
 import Books from "./screens/Books";
@@ -18,7 +15,12 @@ export default function useNavigation() {
 	// Configuration de la route initiale + les routes de l'appli
 	return (
 		<NavigationContainer>
-			<Stack.Navigator initialRouteName="Language">
+			<Stack.Navigator
+				initialRouteName="Language"
+				screenOptions={{
+					headerShown: false,
+				}}
+			>
 				<Stack.Screen name="Language" component={Language} />
 				<Stack.Screen name="Home" component={Home} />
 				<Stack.Screen name="Biographie" component={Bio} />

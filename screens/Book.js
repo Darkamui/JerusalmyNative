@@ -1,3 +1,4 @@
+// IMPORTATION COMPOSANTES, FONTS, HOOKS, ETC.
 import React from "react";
 import {
 	View,
@@ -7,6 +8,7 @@ import {
 	ScrollView,
 	TouchableOpacity,
 	Linking,
+	StyleSheet,
 } from "react-native";
 import BottomNav from "../components/BottomNav";
 import { Divider } from "react-native-elements";
@@ -21,107 +23,27 @@ export default function Book({ navigation, route }) {
 	var rakuten = require("../assets/rakuten.png");
 	const { i18n } = useTranslation();
 	return (
-		<SafeAreaView
-			style={{
-				flex: 1,
-				marginTop: 25,
-				justifyContent: "center",
-				alignItems: "center",
-			}}
-		>
+		<SafeAreaView style={styles.safe}>
 			<ScrollView style={{ marginBottom: 20 }}>
-				<View style={{ justifyContent: "center", alignItems: "center" }}>
-					<Image
-						source={route.params.book.image}
-						style={{
-							height: 350,
-							width: 225,
-							marginTop: 20,
-							resizeMode: "stretch",
-							borderRadius: 8,
-						}}
-					/>
-
-					<Text
-						style={{
-							fontSize: 20,
-							textAlign: "center",
-							fontWeight: "bold",
-							textTransform: "capitalize",
-							marginTop: 20,
-						}}
-					>
-						{route.params.book.title}
-					</Text>
-					<Text
-						style={{
-							fontSize: 15,
-							textAlign: "center",
-							fontWeight: "300",
-							marginTop: 5,
-							marginBottom: 15,
-							textTransform: "capitalize",
-						}}
-					>
+				<View style={styles.center}>
+					<Image source={route.params.book.image} style={styles.bookImg} />
+					<Text style={styles.bookTitle}>{route.params.book.title}</Text>
+					<Text style={styles.bookDate}>
 						{t("sortie")}: {route.params.book.publishDate}
 					</Text>
-					{/* <Text
-						style={{
-							paddingHorizontal: 20,
-							paddingVertical: 15,
-							fontSize: 15,
-							marginTop: 10,
-							backgroundColor: "#fff",
-							color: "black",
-							textTransform: "uppercase",
-							borderRadius: 25,
-							textAlign: "center",
-							marginHorizontal: 5,
-							textTransform: "uppercase",
-							fontWeight: "bold",
-							shadowColor: "red",
-							marginVertical: 20,
-							shadowColor: "#000",
-							shadowOffset: {
-								width: 2,
-								height: 2,
-							},
-							shadowOpacity: 0.45,
-							shadowRadius: 5.84,
-							elevation: 10,
-						}}
-					>
-						Lire un extrait
-					</Text> */}
-
 					<View style={{ flexDirection: "row" }}>
 						<BuyButton image={amazon} link={route.params.book.amazon} />
 						<BuyButton image={rakuten} link={route.params.book.rakuten} />
 						<BuyButton image={fnac} link={route.params.book.fnac} />
 					</View>
-					<View
-						style={{
-							flexDirection: "row",
-							justifyContent: "center",
-							alignItems: "center",
-						}}
-					>
+					<View style={styles.summaryContain}>
 						<Divider
 							width={2}
 							orientation="vertical"
 							color="#000"
 							style={{ marginRight: 10, marginBottom: 50 }}
 						/>
-						<Text
-							style={{
-								fontSize: 17,
-								textAlign: "left",
-								fontWeight: "400",
-								width: "90%",
-								lineHeight: 30,
-								marginBottom: 50,
-							}}
-						>
+						<Text style={styles.bookSum}>
 							{i18n.language == "en"
 								? route.params.book.englishSum
 								: route.params.book.summary}
@@ -133,7 +55,9 @@ export default function Book({ navigation, route }) {
 		</SafeAreaView>
 	);
 }
-const BuyButton = ({ image, link, navigation }) => (
+
+// COMPOSANTE RÉUTILISABLE POUR AFFICHER UN BOUTON D'ACHAT AVEC LIEN
+const BuyButton = ({ image, link }) => (
 	<TouchableOpacity
 		onPress={() =>
 			Linking.openURL(link).catch((err) =>
@@ -172,3 +96,51 @@ const BuyButton = ({ image, link, navigation }) => (
 		</View>
 	</TouchableOpacity>
 );
+
+// STYLES CSS
+const styles = StyleSheet.create({
+	safe: {
+		flex: 1,
+		justifyContent: "center",
+		alignItems: "center",
+	},
+	center: {
+		justifyContent: "center",
+		alignItems: "center",
+	},
+	bookImg: {
+		height: 350,
+		width: 225,
+		marginTop: 20,
+		resizeMode: "stretch",
+		borderRadius: 8,
+	},
+	bookTitle: {
+		fontSize: 20,
+		textAlign: "center",
+		fontWeight: "bold",
+		textTransform: "capitalize",
+		marginTop: 20,
+	},
+	bookDate: {
+		fontSize: 15,
+		textAlign: "center",
+		fontWeight: "300",
+		marginTop: 5,
+		marginBottom: 15,
+		textTransform: "capitalize",
+	},
+	summaryContain: {
+		flexDirection: "row",
+		justifyContent: "center",
+		alignItems: "center",
+	},
+	bookSum: {
+		fontSize: 17,
+		textAlign: "left",
+		fontWeight: "400",
+		width: "90%",
+		lineHeight: 30,
+		marginBottom: 50,
+	},
+});

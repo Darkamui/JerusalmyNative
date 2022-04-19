@@ -1,3 +1,4 @@
+// IMPORTATION COMPOSANTES, FONTS, HOOKS, ETC.
 import React, { useState } from "react";
 import {
 	View,
@@ -16,30 +17,6 @@ import BottomNav from "../components/BottomNav";
 
 // Page d'accueil
 // Affichage texte, image et bouton vers pdf
-
-const styles = StyleSheet.create({
-	actionBtn: {
-		paddingHorizontal: 20,
-		paddingVertical: 15,
-		fontSize: 13,
-		marginTop: 20,
-		backgroundColor: "blue",
-		color: "#fff",
-		textTransform: "uppercase",
-		borderRadius: 15,
-		textAlign: "center",
-		marginHorizontal: 5,
-		shadowColor: "#000",
-		shadowOffset: {
-			width: 5,
-			height: 10,
-		},
-		shadowOpacity: 0.95,
-		shadowRadius: 5.84,
-		elevation: 5,
-		marginBottom: 20,
-	},
-});
 
 export default function Home({ navigation, route }) {
 	var homeImage = require("../assets/home.png");
@@ -60,87 +37,87 @@ export default function Home({ navigation, route }) {
 	};
 
 	return (
-		<SafeAreaView
-			style={{
-				flex: 1,
-				justifyContent: "center",
-				alignItems: "center",
-				marginTop: 25,
-			}}
-		>
+		<SafeAreaView style={styles.safe}>
 			<ScrollView style={{ padding: 0 }}>
 				<HeaderImage image={homeImage} />
-
 				<HeaderText title="Raphaël Jerusalmy" subtitle={t("romancier")} />
-				<View style={{ justifyContent: "center", alignItems: "center" }}>
-					<Text
-						style={{
-							paddingHorizontal: 30,
-							fontSize: 18,
-							lineHeight: 35,
-							marginBottom: 0,
-						}}
-					>
-						{t("topHomeText")}
-					</Text>
-					<Image
-						source={manuelImage}
-						style={{
-							resizeMode: "contain",
-							borderRadius: 5,
-							marginVertical: 15,
-							width: 200,
-							height: 300,
-						}}
-					/>
-					<Text
-						style={{
-							fontWeight: "bold",
-							textAlign: "justify",
-							paddingHorizontal: 30,
-							fontSize: 18,
-							lineHeight: 35,
-						}}
-					>
-						{t("botHomeText")}
-					</Text>
+				<View style={styles.flexCenter}>
+					<Text style={styles.headerTxt}>{t("topHomeText")}</Text>
+					<Image source={manuelImage} style={styles.img} />
+					<Text style={styles.botTxt}>{t("botHomeText")}</Text>
 				</View>
-				<View
-					style={{
-						justifyContent: "center",
-						alignItems: "center",
-						flexDirection: "column",
-						paddingHorizontal: 30,
-						paddingVertical: 10,
-					}}
-				>
-					<View
-						style={{
-							justifyContent: "center",
-							alignItems: "center",
-							flexDirection: "row",
-							flex: 1,
-						}}
+				<View style={styles.flexCenter}>
+					{/* Lien vers pdf, dépendamment de la langue PDF anglais ou français */}
+					<Text
+						style={styles.actionBtn}
+						onPress={() =>
+							currentLanguage == "en"
+								? Linking.openURL(
+										"https://drive.google.com/file/d/1tNVY6HE4ID1_U0SxJ4fLvXrQ1YpI92oQ/view?usp=sharing"
+								  ).catch((err) => console.error("An error occurred", err))
+								: Linking.openURL(
+										"https://drive.google.com/file/d/1_CY4_-iDRYaDP0F0EnJkK0e78UVI5Cq9/view?usp=sharing"
+								  ).catch((err) => console.error("An error occurred", err))
+						}
 					>
-						<Text
-							style={styles.actionBtn}
-							title=""
-							onPress={() =>
-								currentLanguage == "en"
-									? Linking.openURL(
-											"https://drive.google.com/file/d/1tNVY6HE4ID1_U0SxJ4fLvXrQ1YpI92oQ/view?usp=sharing"
-									  ).catch((err) => console.error("An error occurred", err))
-									: Linking.openURL(
-											"https://drive.google.com/file/d/1_CY4_-iDRYaDP0F0EnJkK0e78UVI5Cq9/view?usp=sharing"
-									  ).catch((err) => console.error("An error occurred", err))
-							}
-						>
-							{t("download")}
-						</Text>
-					</View>
+						{t("download")}
+					</Text>
 				</View>
 			</ScrollView>
 			<BottomNav navigation={navigation} />
 		</SafeAreaView>
 	);
 }
+
+// STYLES CSS
+const styles = StyleSheet.create({
+	actionBtn: {
+		paddingHorizontal: 20,
+		paddingVertical: 15,
+		fontSize: 13,
+		marginTop: 20,
+		backgroundColor: "blue",
+		color: "#fff",
+		textTransform: "uppercase",
+		borderRadius: 15,
+		textAlign: "center",
+		marginHorizontal: 5,
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 5,
+			height: 10,
+		},
+		shadowOpacity: 0.95,
+		shadowRadius: 5.84,
+		elevation: 5,
+		marginBottom: 10,
+	},
+	safe: {
+		flex: 1,
+		justifyContent: "center",
+		alignItems: "center",
+	},
+	flexCenter: {
+		justifyContent: "center",
+		alignItems: "center",
+	},
+	headerTxt: {
+		paddingHorizontal: 30,
+		fontSize: 18,
+		lineHeight: 35,
+	},
+	img: {
+		resizeMode: "contain",
+		borderRadius: 5,
+		marginVertical: 15,
+		width: 200,
+		height: 300,
+	},
+	botTxt: {
+		fontWeight: "bold",
+		textAlign: "justify",
+		paddingHorizontal: 30,
+		fontSize: 18,
+		lineHeight: 35,
+	},
+});

@@ -1,14 +1,6 @@
 // IMPORTATION COMPOSANTES, FONTS, ETC.
 import React from "react";
-
-import {
-	View,
-	Text,
-	Image,
-	SafeAreaView,
-	StyleSheet,
-	Animated,
-} from "react-native";
+import { View, Text, Image, SafeAreaView, StyleSheet } from "react-native";
 import {
 	useFonts,
 	DancingScript_700Bold,
@@ -28,130 +20,90 @@ export default function Language({ navigation }) {
 		return <AppLoading />;
 	}
 	return (
-		<Animated.View
-			style={{
-				flex: 1,
-				justifyContent: "center",
-				alignItems: "center",
-				backgroundColor: "#ffffffcc",
-			}}
-		>
-			<SafeAreaView
-				style={{ flex: 1, justifyContent: "center", alignItem: "center" }}
-			>
+		<SafeAreaView style={styles.safeArea}>
+			<View style={styles.imgContain}>
+				<Image source={langImage} style={styles.img} />
+			</View>
+			<Text style={styles.titleTxt}>Raphaël Jerusalmy</Text>
+			<View>
+				{/* Au clic envoie vers la page home avec la valeur en ou fr dépendamment du choix */}
 				<View
-					style={{
-						width: 200,
-						height: 200,
-						marginBottom: 15,
-					}}
+					style={styles.btnContain}
+					onStartShouldSetResponder={() =>
+						navigation.navigate("Home", {
+							value: "fr",
+						})
+					}
 				>
-					<Image
-						source={langImage}
-						style={{
-							resizeMode: "contain",
-							width: "100%",
-							height: "100%",
-							borderRadius: 100,
-						}}
-					/>
+					<CountryFlag isoCode="fr" size={25} style={{ marginRight: 15 }} />
+					<Text style={styles.btnTxt}>français</Text>
 				</View>
-				<Text
-					style={{
-						fontFamily: "DancingScript_700Bold",
-						fontSize: 30,
-						color: "black",
-						textAlign: "center",
-					}}
+
+				<View
+					style={styles.btnContain}
+					onStartShouldSetResponder={() =>
+						navigation.navigate("Home", {
+							value: "en",
+						})
+					}
 				>
-					Raphaël Jerusalmy
-				</Text>
-				<View>
-					<View
-						style={{
-							flexDirection: "row",
-							alignItems: "center",
-							paddingHorizontal: 20,
-							paddingVertical: 15,
-							marginTop: 20,
-							backgroundColor: "white",
-
-							borderRadius: 15,
-
-							marginHorizontal: 5,
-							shadowColor: "#000",
-							shadowOffset: {
-								width: 5,
-								height: 10,
-							},
-							shadowOpacity: 0.95,
-							shadowRadius: 5.84,
-							elevation: 5,
-						}}
-						onStartShouldSetResponder={() =>
-							navigation.navigate("Home", {
-								value: "fr",
-							})
-						}
-					>
-						<CountryFlag isoCode="fr" size={25} style={{ marginRight: 15 }} />
-						<Text
-							style={{
-								color: "black",
-								fontSize: 13,
-								fontWeight: "500",
-								textTransform: "capitalize",
-								textAlign: "center",
-							}}
-							title=""
-						>
-							français
-						</Text>
-					</View>
-
-					<View
-						style={{
-							flexDirection: "row",
-							alignItems: "center",
-							paddingHorizontal: 20,
-							paddingVertical: 15,
-							marginTop: 20,
-							backgroundColor: "white",
-
-							borderRadius: 15,
-
-							marginHorizontal: 5,
-							shadowColor: "#000",
-							shadowOffset: {
-								width: 5,
-								height: 10,
-							},
-							shadowOpacity: 0.95,
-							shadowRadius: 5.84,
-							elevation: 5,
-						}}
-						onStartShouldSetResponder={() =>
-							navigation.navigate("Home", {
-								value: "en",
-							})
-						}
-					>
-						<CountryFlag isoCode="gb" size={25} style={{ marginRight: 15 }} />
-						<Text
-							style={{
-								color: "black",
-								fontSize: 13,
-								textTransform: "capitalize",
-								textAlign: "center",
-								fontWeight: "500",
-							}}
-							title=""
-						>
-							Anglais
-						</Text>
-					</View>
+					<CountryFlag isoCode="gb" size={25} style={{ marginRight: 15 }} />
+					<Text style={styles.btnTxt}>Anglais</Text>
 				</View>
-			</SafeAreaView>
-		</Animated.View>
+			</View>
+		</SafeAreaView>
 	);
 }
+
+// STYLES CSS
+const styles = StyleSheet.create({
+	safeArea: {
+		flex: 1,
+		justifyContent: "center",
+		alignItems: "center",
+	},
+	imgContain: {
+		width: 200,
+		height: 200,
+		marginBottom: 15,
+	},
+	img: {
+		resizeMode: "contain",
+		width: "100%",
+		height: "100%",
+		borderRadius: 100,
+	},
+	titleTxt: {
+		fontFamily: "DancingScript_700Bold",
+		fontSize: 30,
+		color: "black",
+		textAlign: "center",
+	},
+	btnContain: {
+		flexDirection: "row",
+		alignItems: "center",
+		paddingHorizontal: 20,
+		paddingVertical: 15,
+		marginTop: 20,
+		backgroundColor: "white",
+
+		borderRadius: 15,
+
+		marginHorizontal: 5,
+		shadowColor: "#000",
+		shadowOffset: {
+			width: 5,
+			height: 10,
+		},
+		shadowOpacity: 0.95,
+		shadowRadius: 5.84,
+		elevation: 5,
+	},
+	btnTxt: {
+		color: "black",
+		fontSize: 13,
+		fontWeight: "500",
+		textTransform: "capitalize",
+		textAlign: "center",
+	},
+});

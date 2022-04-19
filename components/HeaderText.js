@@ -5,6 +5,22 @@ import React from "react";
 // Composante pour titre d'en-tête
 // Recoit le titre et soustitre voulu
 
+export default function HeaderText({ title, subtitle }) {
+	return (
+		<View style={styles.container}>
+			<Text style={styles.title}>{title}</Text>
+			<Text style={styles.subtitle}>{subtitle}</Text>
+			<Divider
+				width={1.5}
+				orientation="vertical"
+				style={{ marginHorizontal: 30, marginTop: 15 }}
+				color="#000"
+			/>
+		</View>
+	);
+}
+
+// STYLES CSS
 const styles = StyleSheet.create({
 	container: {
 		flexDirection: "column",
@@ -26,17 +42,3 @@ const styles = StyleSheet.create({
 		textTransform: "uppercase",
 	},
 });
-export default function HeaderText({ title, subtitle }) {
-	return (
-		<View style={styles.container}>
-			<Text style={styles.title}>{title}</Text>
-			<Text style={styles.subtitle}>{subtitle}</Text>
-			<Divider
-				width={1.5}
-				orientation="vertical"
-				style={{ marginHorizontal: 30, marginTop: 15 }}
-				color="#000"
-			/>
-		</View>
-	);
-}
